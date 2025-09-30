@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tripzy - Search Your Stay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/6d86d85d76.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #102335;
+    }
+
+    header {
+      margin: 5px 10px;
+      border-radius: 20px;
+      background: linear-gradient(to right, #000428, #004e92);
+      padding: 0 50px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      position: relative;
+    }
+
+    header h2 {
+      scale: 1.5;
+      margin: 0;
+    }
+
+    header h2 span {
+      color: greenyellow;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      margin: 50px;
+      flex-wrap: wrap;
+      
+    }
+
+    .nav-left i {
+      margin-right: 6px;
+    }
+
+    .nav-left div {
+      padding: 10px 10px;
+      color: white;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .nav-left div:hover {
+      outline: 1px solid white;
+      border-radius: 30px;
+    }
+
+    .nav-left img {
+      height: 20px;
+      margin-left: 10px;
+    }
+
+    .user-logo {
+      width: 30px;
+      height: 30px;
+      background-color: #febb02;
+      border-radius: 50%;
+      color: black;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 30px;
+      font-size: 14px;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .user-info-popup {
+      display: none;
+      position: absolute;
+      right: 40px;
+      top: 75px;
+      background: rgb(0, 0, 0);
+      color: rgb(0, 0, 0);
+      padding: 12px 16px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      width: 220px;
+      font-size: 14px;
+    }
+
+    .user-info-popup p {
+      margin: 5px 0;
+    }
+
+    .search-section {
+      border-radius: 30px;
+      background: linear-gradient(135deg, #1c92d2d6, #f2fcfee4);
+      color: white;
+      padding: 60px 50px 100px;
+      position: relative;
+      padding-left: 250px;
+      text-align: center;
+      margin: 10px;
+    }
+
+    .search-section h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      margin-left: -200px;
+    }
+
+    .search-section p {
+      font-size: 18px;
+      font-weight: 400;
+      margin-left: -200px;
+    }
+
+    .search-box {
+      margin-top: 30px;
+      background-color: white;
+      border-radius: 12px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border: 2px solid #febb02;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+    }
+
+    .search-box > div {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-right: 1px solid #ddd;
+      min-width: 160px;
+      cursor: pointer;
+    }
+
+    .search-box > div:hover {
+      background-color: #f5f5f5;
+    }
+
+    .search-box > div:last-child {
+      border-right: none;
+      justify-content: center;
+    }
+
+    .search-box i {
+      color: #666;
+      margin-right: 6px;
+    }
+
+    .search-box input, .search-box select {
+      border: none;
+      outline: none;
+      font-size: 15px;
+      flex: 1;
+      color: black;
+      background: transparent;
+    }
+
+    .search-box button {
+      background-color: #0071c2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn {
+      background-color: #0071c2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .search-box button:hover {
+      background-color: #005fa3;
+    }
+
+    .guest-options {
+      display: none;
+      background: white;
+      color: black;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 10px;
+      margin-left: 395px;
+      max-width: 200px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 2;
+      position: relative;
+    }
+
+    .guest-options label {
+      display: block;
+      margin: 10px 0 4px;
+    }
+
+    .guest-options input[type="number"] {
+      width: 60px;
+      padding: 6px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-left: 10px;
+    }
+
+    .checkbox-label {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: black;
+    }
+
+    .checkbox-label input {
+      margin-right: 8px;
+    }
+
+    .map-section {
+      padding: 30px;
+      color: white;
+      text-align: center;
+      margin: 10px;
+      border-radius: 30px;
+      background: linear-gradient(to right, #000046, #1cb5e0);
+
+    }
+
+    .map-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .route-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .route-inputs input {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 15px;
+      min-width: 200px;
+    }
+
+    .route-inputs button {
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      background-color: #00b894;
+      color: white;
+      cursor: pointer;
+    }
+
+    .route-inputs button:hover {
+      background-color: #019875;
+    }
+
+    iframe {
+      border-radius: 20px;
+    }
+
+    
+.scroll-section {
+  width: 1500px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 40px 10px;
+  box-shadow: 2px 2px 30px;
+  background: linear-gradient(135deg, #4568dc, #b06ab3);
+
+}
+.scroler1{
+ 
+  height: 95%;
+  width: 95%;
+}
+.hotel-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 16px;
+  padding: 20px 40px;
+  scroll-snap-type: x mandatory;
+}
+.hotel-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.hotel-card {
+  flex: 0 0 auto;
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.hotel-card:hover {
+  transform: translateY(-5px);
+}
+.hotel-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.hotel-content {
+  padding: 14px;
+}
+.hotel-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 0 4px;
+}
+.hotel-content p {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 6px;
+}
+.rating {
+  display: inline-block;
+  background-color: #003580;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-right: 8px;
+}
+.old-price {
+  text-decoration: line-through;
+  color: red;
+  font-size: 14px;
+}
+.new-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #111;
+}
+.deal-badge {
+  display: inline-block;
+  background-color: #008009;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.scroll-heading {
+  color:#fff;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 20px 40px;
+}
+
+/* Scroll Buttons */
+.scroll-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  z-index: 1;
+}
+.scroll-btn.left {
+  left: 10px;
+}
+.scroll-btn.right {
+  right: 10px;
+}
+
+ 
+
+    .trending-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      height: 90%;
+      margin: 10px 10px;
+      border-radius: 30px;
+      box-shadow: 2px 2px 80px rgba(0, 0, 0, 0.614);
+background: linear-gradient(135deg, #dbefff, #a1c4fd, #c2e9fb);
+
+    }
+
+    .trend{
+      box-shadow: 2px 2px 80px rgba(0, 0, 0, 0.614);
+      border-radius: 20px;
+      padding: 20px 40px;
+      height: 90%;
+      width: 90%;
+      background: linear-gradient(135deg, #1c92d2, #f2fcfe);
+
+      
+    }
+
+    .trending-section h2 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    .subtext {
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .destination-card {
+      position: relative;
+      height: 200px;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .destination-card:hover {
+      transform: scale(1.03);
+    }
+
+    .destination-card span {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .features-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  background-color:transparent;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card img {
+  width: 60px;
+  height: 60px;
+}
+
+.feature-card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+  
+
+  .footer {
+      background: linear-gradient(135deg, #0a1f44, #1e90ff);
+      color: white;
+      padding: 40px 60px;
+      border-top: 1px solid #0d3c79;
+    }
+
+    .footer-columns {
+      margin-left: 80px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-column {
+      flex: 1 1 180px;
+      margin-bottom: 30px;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      margin: 6px 0;
+    }
+
+    .footer-column ul li a {
+      text-decoration: none;
+      color: #cde6ff;
+      font-size: 14px;
+    }
+
+    .footer-column ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .currency-selector {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .currency-selector img {
+      width: 20px;
+      height: 14px;
+      margin-right: 10px;
+    }
+
+    .currency-selector span {
+      font-weight: bold;
+      color: white;
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #e0e0e0;
+      text-align: center;
+    }
+
+    .footer-logos {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .footer-logos img {
+      margin: 0 10px;
+      height: 22px;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 768px) {
+      .footer-columns {
+        flex-direction: column;
+      }
+
+      .footer-column {
+        margin-bottom: 20px;
+      }
+    }
+    .search-box select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: black;
+  background-color: white;
+  font-weight: 500;
+}
+
+
+  </style>
+  <script>
+    function toggleGuestOptions() {
+      const guestBox = document.querySelector('.guest-options');
+      guestBox.style.display = guestBox.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function performSearch() {
+      const location = document.querySelector('#locationSelect').value;
+      const date = document.querySelector('.search-box input[type="date"]').value;
+      const adults = document.getElementById('adults').value;
+      const children = document.getElementById('children').value;
+      const rooms = document.getElementById('rooms').value;
+      const pets = document.querySelector('.guest-options input[type="checkbox"]').checked;
+
+     
+
+const passengerData = {
+  location,
+  date,
+  budget,
+  adults,
+  children,
+  rooms,
+  pets
+};
+
+      localStorage.setItem('passengerDetails', JSON.stringify(passengerData));
+      window.location.href = 'Tripzy_home.html';
+    }
+
+    function updateGuestInput() {
+      const adults = document.getElementById('adults').value;
+      const children = document.getElementById('children').value;
+      const rooms = document.getElementById('rooms').value;
+      document.getElementById('guestInput').value = `${adults} adults · ${children} children · ${rooms} room${rooms > 1 ? 's' : ''}`;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const navItems = document.querySelectorAll(".nav-left div");
+      navItems[0].addEventListener("click", () => {
+        document.querySelector(".trending-section").scrollIntoView({ behavior: "smooth" });
+      });
+      navItems[1].addEventListener("click", () => {
+        document.querySelector(".scroll-section").scrollIntoView({ behavior: "smooth" });
+      });
+
+      const gmail = "devraj@example.com";
+      const firstLetter = gmail[0] || "U";
+      document.getElementById("userLogo").textContent = firstLetter;
+
+
+      const userLogo = document.getElementById("userLogo");
+      const userInfo = document.getElementById("userInfo");
+
+      userLogo.addEventListener("click", () => {
+        userInfo.style.display = userInfo.style.display === "block" ? "none" : "block";
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!userLogo.contains(e.target) && !userInfo.contains(e.target)) {
+          userInfo.style.display = "none";
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h2><span>Trip</span>zy</h2>
+    <div class="nav-left">
+      <div><i class="fa-solid fa-location-dot"></i>Top Destinations</div>
+      <div><i class="fa-solid fa-percent"></i>Deals & Offers</div>
+      <img src="https://flagcdn.com/w40/in.png" alt="India Flag">
+
+<div id="userIcon" style="cursor: pointer; position: fixed; top: 15px; right: 30px;">
+  <i class="fas fa-user-circle" style="font-size: 32px; color: white;"></i>
+</div>
+
+
+<div id="userProfileBox" style="display: none; position: fixed; top: 70px; right: 30px; background: white; color: black; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000; ">
+  <p><strong>👤 Username:</strong> <span id="profileUsername">-</span></p>
+  <p><strong>📧 Email:</strong> <span id="profileEmail">-</span></p>
+  <a href="frontpage.html" style="color: #000; font-weight: 800;" ><i class="fas fa-right-from-bracket"></i>
+Logout</a>
+</div>
+
+    </div>
+  </header>
+
+  <section class="search-section">
+  <h1>Find your next stay</h1>
+  <p>Search low prices on hotels, homes and much more...</p>
+
+  <div class="search-box">
+    <div>
+      <i class="fa-solid fa-location-dot"></i>
+      <select id="locationSelect" style="margin-left: -15px; scale:0.8;">
+        <option value="">Where are you going?</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Goa">Goa</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Haryana">Haryana</option>
+        <option value="Himachal Pradesh">Himachal Pradesh</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Madhya Pradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Odisha">Odisha</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Telangana">Telangana</option>
+        <option value="Tripura">Tripura</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <option value="Uttarakhand">Uttarakhand</option>
+        <option value="West Bengal">West Bengal</option>
+      </select>
+    </div>
+
+    <div>
+      <i class="fa-solid fa-calendar-days"></i>
+      <input id="date" type="date">
+    </div>
+
+    <div onclick="toggleGuestOptions()">
+      <i class="fa-solid fa-user-group"></i>
+      <input type="text" id="guestInput" style="width: 100px; " placeholder="Adults · Children · Rooms" readonly>
+    </div>
+
+<div>
+  <i class="fa-solid fa-indian-rupee-sign"></i>
+<select id="budgetSelect" name="price-range">
+  <option value="Select Budget">Select Budget</option>
+  <optgroup label="Budget (₹1000 - ₹3000)">
+    <option value="1000-2000">₹1000 - ₹2000</option> 
+    <option value="2000-3000">₹2000 - ₹3000</option>
+  </optgroup>
+
+  <optgroup label="Premium (₹3000 - ₹7000)">
+    <option value="3000-4000">₹3000 - ₹4000</option>
+    <option value="4000-5000">₹4000 - ₹5000</option>
+    <option value="5000-6000">₹5000 - ₹6000</option>
+    <option value="6000-7000">₹6000 - ₹7000</option>
+  </optgroup>
+
+  <optgroup label="Luxury (₹7000 - ₹10000)">
+    <option value="7000-8000">₹7000 - ₹8000</option>
+    <option value="8000-9000">₹8000 - ₹9000</option>
+    <option value="9000-10000">₹9000 - ₹10000</option>
+  </optgroup>
+</select>
+
+</div>
+
+
+    <div>
+      <button onclick="performSearch()">
+        <i class="fas fa-search" style="color: #fff;"></i> Search
+      </button>
+    </div>
+  </div>
+
+  <div class="guest-options">
+    <label for="adults">Adults:</label>
+    <input type="number" id="adults" name="adults" value="0" min="0" onchange="updateGuestInput()">
+
+    <label for="children">Children:</label>
+    <input type="number" id="children" name="children" value="0" min="0" onchange="updateGuestInput()">
+
+    <label for="rooms">Rooms:</label>
+    <input type="number" id="rooms" name="rooms" value="0" min="0" onchange="updateGuestInput()">
+
+    <label class="checkbox-label">
+      <input type="checkbox"> Travelling with pets?
+    </label>
+    <button class="btn" onclick="closeGuestOptions()">Done</button>
+
+  </div>
+</section>
+
+<script>
+function closeGuestOptions() {
+  document.querySelector('.guest-options').style.display = 'none';
+}
+</script>
+
+
+<script>
+function performSearch() {
+  const location = document.getElementById("locationSelect").value;
+  const budget = document.getElementById("budgetSelect").value;
+  const date = document.getElementById("date").value;
+
+
+  if (location === "") {
+    alert("Please select a location.");
+    return;
+  }
+
+
+  if (budget === "") {
+    alert("Please select a budget.");
+    return;
+  }
+
+
+  if (date === "") {
+    alert("Please select a date.");
+    return;
+  }
+
+ 
+  const url = `explore2.html?location=${encodeURIComponent(location)}&budget=${encodeURIComponent(budget)}&date=${encodeURIComponent(date)}`;
+  window.location.href = url;
+}
+</script>
+
+<script>
+function updateGuestInput() {
+  const adults = document.getElementById("adults").value;
+  const children = document.getElementById("children").value;
+  const rooms = document.getElementById("rooms").value;
+
+  const guestInput = document.getElementById("guestInput");
+  guestInput.value = `${adults} Adults · ${children} Children · ${rooms} Rooms`;
+}
+</script>
+
+
+
+
+<script>
+  function updateBudgetDisplay(value) {
+    document.getElementById('budgetValue').innerText = '₹' + value;
+  }
+</script>
+
+  <section class="map-section">
+    <h2>Plan Your Route</h2>
+    <div class="map-container">
+      <div class="route-inputs">
+        <input type="text" placeholder="From (e.g., Hyderabad)" />
+        <input type="text" placeholder="To (e.g., Mumbai)" />
+        <button>Search Route</button>
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d60904.917764187514!2d78.3728449!3d17.43301755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1752324645889!5m2!1sen!2sin"
+        width="1200" height="550" style="border:0; box-shadow: 2px 2px 60px rgba(0, 0, 0, 0.765);"  allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+
+<div class="scroll-section">
+  <div class="scroler1">
+  <div class="scroll-heading">🔥 Top Hotel Deals for You</div>
+
+  <button class="scroll-btn left" onclick="scrollHotels(-1)">&#10094;</button>
+  <button class="scroll-btn right" onclick="scrollHotels(1)">&#10095;</button>
+
+  <div class="hotel-scroll-container" id="hotelScroll">
+
+    <div class="hotel-card">
+      <img src="htl1.jpg" />
+      <div class="hotel-content">
+        <div class="rating">8.5</div><span>Very Good · 62 reviews</span>
+        <h4>Olive Hotel Benz Circle</h4>
+        <p>Vijayawada, India</p>
+        <div class="deal-badge">Getaway Deal</div>
+        <p><span class="old-price">₹6,896</span> <span class="new-price">₹5,517</span></p>
+      </div>
+    </div>
+
+    
+    <div class="hotel-card">
+      <img src="htl2.jpg" />
+      <div class="hotel-content">
+        <div class="rating">7.6</div><span>Good · 84 reviews</span>
+        <h4>Hotel Aerotel</h4>
+        <p>Shamshabad, Hyderabad</p>
+        <div class="deal-badge">Limited Offer</div>
+        <p><span class="old-price">₹5,056</span> <span class="new-price">₹4,298</span></p>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <img src="htl3.jpg" />
+      <div class="hotel-content">
+        <div class="rating">6.3</div><span>Fair · 8 reviews</span>
+        <h4>Hampi Nature Cottage</h4>
+        <p>New Hampi, India</p>
+        <div class="deal-badge">Getaway Deal</div>
+        <p><span class="old-price">₹3,300</span> <span class="new-price">₹2,640</span></p>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <img src="htl4.jpg" />
+      <div class="hotel-content">
+        <div class="rating">7.4</div><span>Good · 172 reviews</span>
+        <h4>Park Signature Hotels</h4>
+        <p>Vijayawada, India</p>
+        <div class="deal-badge">Hot Deal</div>
+        <p><span class="old-price">₹6,298</span> <span class="new-price">₹5,039</span></p>
+      </div>
+    </div>
+
+<div class="hotel-card">
+  <img src="htl5.jpg" />
+  <div class="hotel-content">
+    <div class="rating">8.9</div><span>Excellent · 210 reviews</span>
+    <h4>The Oberoi Udaivilas</h4>
+    <p>Udaipur, India</p>
+    <div class="deal-badge">Luxury Deal</div>
+    <p><span class="old-price">₹12,000</span> <span class="new-price">₹9,999</span></p>
+  </div>
+</div>
+
+<div class="hotel-card">
+  <img src="htl6.jpg" />
+  <div class="hotel-content">
+    <div class="rating">8.2</div><span>Very Good · 98 reviews</span>
+    <h4>Taj Exotica</h4>
+    <p>Goa, India</p>
+    <div class="deal-badge">Weekend Deal</div>
+    <p><span class="old-price">₹8,800</span> <span class="new-price">₹7,200</span></p>
+  </div>
+</div>
+
+<div class="hotel-card">
+  <img src="htl7.jpg" />
+  <div class="hotel-content">
+    <div class="rating">7.9</div><span>Good · 45 reviews</span>
+    <h4>Forest Villa Retreat</h4>
+    <p>Munnar, Kerala</p>
+    <div class="deal-badge">Nature Escape</div>
+    <p><span class="old-price">₹4,000</span> <span class="new-price">₹3,199</span></p>
+  </div>
+</div>
+
+<div class="hotel-card">
+  <img src="htl8.jpg" />
+  <div class="hotel-content">
+    <div class="rating">9.2</div><span>Superb · 320 reviews</span>
+    <h4>Rambagh Palace</h4>
+    <p>Jaipur, India</p>
+    <div class="deal-badge">Royal Stay</div>
+    <p><span class="old-price">₹14,500</span> <span class="new-price">₹11,999</span></p>
+  </div>
+</div>
+
+<div class="hotel-card">
+  <img src="htl9.jpg" />
+  <div class="hotel-content">
+    <div class="rating">7.0</div><span>Good · 71 reviews</span>
+    <h4>Neemrana Fort Palace</h4>
+    <p>Alwar, Rajasthan</p>
+    <div class="deal-badge">Historic Deal</div>
+    <p><span class="old-price">₹6,000</span> <span class="new-price">₹4,800</span></p>
+  </div>
+</div>
+
+<div class="hotel-card">
+  <img src="htl10.jpg" />
+  <div class="hotel-content">
+    <div class="rating">6.8</div><span>Fair · 56 reviews</span>
+    <h4>Hotel Silver Moon</h4>
+    <p>Ahmedabad, India</p>
+    <div class="deal-badge">City Saver</div>
+    <p><span class="old-price">₹3,200</span> <span class="new-price">₹2,650</span></p>
+  </div>
+</div>
+
+<div class="hotel-card">
+  <img src="htl11.jpg" />
+  <div class="hotel-content">
+    <div class="rating">7.5</div><span>Good · 64 reviews</span>
+    <h4>Cityview Inn</h4>
+    <p>Chennai, India</p>
+    <div class="deal-badge">Urban Deal</div>
+    <p><span class="old-price">₹3,600</span> <span class="new-price">₹2,999</span></p>
+  </div>
+</div>
+
+<div class="hotel-card">
+  <img src="htl10.jpg" />
+  <div class="hotel-content">
+    <div class="rating">8.0</div><span>Very Good · 120 reviews</span>
+    <h4>Blue Lagoon Resort</h4>
+    <p>Pondicherry, India</p>
+    <div class="deal-badge">Poolside Offer</div>
+    <p><span class="old-price">₹6,500</span> <span class="new-price">₹5,200</span></p>
+  </div>
+</div>
+
+    
+  </div>
+  </div>
+</div>
+
+<section class="trending-section">
+  <div class="trend">
+    <h2>Trending destinations</h2>
+    <p class="subtext">Travellers searching for India also booked these</p>
+
+    <div class="card-grid">
+      <div class="destination-card" data-link="https://en.wikipedia.org/wiki/Pondicherry" style="background-image: url('Puducherry.jpg');">
+        <span>Puducherry  <img src="https://flagcdn.com/w40/in.png" alt="India Flag"  style="position: absolute; top: 1px; margin-left: 5px;"> </span>
+      </div>
+      <div class="destination-card" data-link="https://en.wikipedia.org/wiki/Chennai" style="background-image: url('chennai.jpg');">
+        <span>Chennai <img src="https://flagcdn.com/w40/in.png" alt="India Flag" style="position: absolute; top: 1px; margin-left: 5px;"> </span>
+      </div>
+      <div class="destination-card" data-link="https://en.wikipedia.org/wiki/Bhadrachalam" style="background-image: url('bhadrachalam.jpg');">
+        <span>Bhadrachalam <img src="https://flagcdn.com/w40/in.png" alt="India Flag" style="position: absolute; top: 1px; margin-left: 5px;"> </span>
+      </div>
+      <div class="destination-card" data-link="https://en.wikipedia.org/wiki/Mamallapuram" style="background-image: url('mahabalipuram.jpg');">
+        <span>Mahabalipuram <img src="https://flagcdn.com/w40/in.png" alt="India Flag" style="position: absolute; top: 1px; margin-left: 5px;"> </span>
+      </div>
+      <div class="destination-card" data-link="https://en.wikipedia.org/wiki/Madurai" style="background-image: url('madurai.jpg');">
+        <span>Madurai <img src="https://flagcdn.com/w40/in.png" alt="India Flag" style="position: absolute; top: 1px; margin-left: 5px;"> </span>
+      </div>
+      </div>
+    </div>
+  </section>
+
+    <script>
+  document.querySelectorAll('.destination-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const destinationLink = card.getAttribute('data-link');
+      if (destinationLink) {
+        window.location.href = destinationLink;
+      } else {
+        alert('No link found for this destination.');
+      }
+    });
+  });
+</script>
+
+
+<script>
+function scrollHotels(direction) {
+  const container = document.getElementById("hotelScroll");
+  const scrollAmount = 320; 
+  container.scrollBy({
+    left: direction * scrollAmount,
+    behavior: "smooth"
+  });
+}
+</script>
+
+
+
+<section class="features-container">
+    <div class="feature-card">
+      <img src="https://img.icons8.com/color/96/000000/calendar.png" alt="Calendar Icon">
+      <div>
+        <h3>Book now, pay at the property</h3>
+        <p>FREE cancellation on most rooms</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <img src="https://img.icons8.com/color/96/000000/globe--v1.png" alt="Globe Icon">
+      <div>
+        <h3>2+ million properties worldwide</h3>
+        <p>Hotels, guest houses, apartments, and more...</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <img src="https://img.icons8.com/color/96/000000/customer-support.png" alt="Customer Support Icon">
+      <div>
+        <h3>Trusted customer service you can rely on, 24/7</h3>
+        <p>We're always here to help</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  document.querySelectorAll('.feature-card').forEach(card => {
+    card.addEventListener('click', () => {
+      alert("This is a feature of Tripzy!");
+    });
+  });
+</script>
+
+<footer class="footer">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Help & Support</h4>
+        <ul>
+          <li><a href="#">FAQs & Guidelines</a></li>
+          <li><a href="#">Manage My Bookings</a></li>
+          <li><a href="#">Contact Tripzy Team</a></li>
+          <li><a href="#">Travel Safety Info</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Discover with Tripzy</h4>
+        <ul>
+          <li><a href="#">Tripzy Deals & Offers</a></li>
+          <li><a href="#">Top Destinations</a></li>
+          <li><a href="#">Travel Inspiration</a></li>
+          <li><a href="#">Tripzy for Business</a></li>
+          <li><a href="#">User Reviews</a></li>
+          <li><a href="#">Flights & Transfers</a></li>
+          <li><a href="#">Hotel Finder</a></li>
+          <li><a href="#">Tripzy Agents</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Legal & Policies</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Accessibility</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+          <li><a href="#">User Agreement</a></li>
+          <li><a href="#">Rights & Protection</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Partner with Us</h4>
+        <ul>
+          <li><a href="#">Property Registration</a></li>
+          <li><a href="#">Affiliate Program</a></li>
+          <li><a href="#">Work with Tripzy</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">Media Kit</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="currency-selector">
+      <img src="https://flagcdn.com/in.svg" alt="India Flag" />
+      <span>IN - India </span>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Tripzy is your trusted companion in exploring the world — flights, hotels, and experiences, all in one place.<br>
+      © 2025 Tripzy.com™. All rights reserved.</p>
+    </div>
+
+    <div class="footer-logos">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Booking.com_logo.jpg"  alt="MakeMyTrip">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Priceline_Logo.svg" alt="Goibibo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/KAYAK_logo.svg" alt="Goibibo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Agoda_logo.svg" alt="Cleartrip ">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/OpenTable_logo.svg" alt="TripAdvisor">
+    </div>
+  </footer>
+
+  <!--ICON-->
+
+  <script>
+ 
+  const userIcon = document.getElementById("userIcon");
+  const profileBox = document.getElementById("userProfileBox");
+  const usernameSpan = document.getElementById("profileUsername");
+  const emailSpan = document.getElementById("profileEmail");
+
+  const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+
+  if (storedUser) {
+    usernameSpan.textContent = storedUser.username;
+    emailSpan.textContent = storedUser.email;
+  }
+
+  
+  userIcon.addEventListener("click", () => {
+    profileBox.style.display = profileBox.style.display === "none" ? "block" : "none";
+  });
+
+ 
+  window.addEventListener("click", function (e) {
+    if (!userIcon.contains(e.target) && !profileBox.contains(e.target)) {
+      profileBox.style.display = "none";
+    }
+  });
+</script>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Confirmed</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+  <style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  height: 100vh;
+  width: 100%;
+}
+
+.container {
+  text-align: center;
+}
+
+.card {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  margin: 10px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.checkmark-circle {
+  width: 80px;
+  height: 80px;
+  background: #4BB543;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+  font-size: 36px;
+  color: white;
+  animation: pop 0.6s ease;
+}
+
+.card h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #666;
+  margin: 8px 0;
+}
+
+.details {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.details p {
+  margin: 6px 0;
+  color: #444;
+}
+
+.home-btn {
+  display: inline-block;
+  margin-top: 25px;
+  background: #2c5364;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition:  0.3s ease;
+}
+
+.home-btn:hover {
+  background: #1a2b34;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+header {
+      margin: 5px 10px;
+      border-radius: 20px;
+      background: linear-gradient(to right, #000428, #004e92);
+      padding: 0 50px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      position: relative;
+    }
+
+    header h2 {
+      scale: 1.5;
+      margin: 0;
+    }
+
+    header h2 span {
+      color: greenyellow;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      margin: 50px;
+      flex-wrap: wrap;
+      
+    }
+
+    .nav-left i {
+      margin-right: 6px;
+    }
+
+    .nav-left div {
+      padding: 10px 10px;
+      color: white;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .nav-left div:hover {
+      outline: 1px solid white;
+      border-radius: 30px;
+    }
+
+    .nav-left img {
+      height: 20px;
+      margin-left: 10px;
+    }
+
+    .user-logo {
+      width: 30px;
+      height: 30px;
+      background-color: #febb02;
+      border-radius: 50%;
+      color: black;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 30px;
+      font-size: 14px;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .user-info-popup {
+      display: none;
+      position: absolute;
+      right: 40px;
+      top: 75px;
+      background: rgb(0, 0, 0);
+      color: rgb(0, 0, 0);
+      padding: 12px 16px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      width: 220px;
+      font-size: 14px;
+    }
+
+    .user-info-popup p {
+      margin: 5px 0;
+    }
+
+    .checkmark {
+  width: 52px;
+  height: 52px;
+  stroke: white;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.checkmark-circle-bg {
+  stroke: #4BB543;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: stroke 0.6s ease forwards;
+}
+
+.checkmark-check {
+  stroke: #fff;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.4s 0.6s ease forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+<div class="div">
+    <header>
+    <h2><span>Trip</span>zy</h2>
+    <div class="nav-left">
+      <div><i class="fa-solid fa-location-dot"></i>Top Destinations</div>
+      <div><i class="fa-solid fa-percent"></i>Deals & Offers</div>
+      <img src="https://flagcdn.com/w40/in.png" alt="India Flag">
+                            <!-- User Icon -->
+<div id="userIcon" style="cursor: pointer; position: fixed; top: 15px; right: 30px;">
+  <i class="fas fa-user-circle" style="font-size: 32px; color: white;"></i>
+</div>
+
+<!-- Profile Popup Box (initially hidden) -->
+<div id="userProfileBox" style="display: none; position: fixed; top: 70px; right: 30px; background: white; color: black; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000; ">
+  <p style="text-align: left;"><strong>👤 Username:</strong> <span id="profileUsername">-</span></p>
+  <p><strong>📧 Email:</strong> <span id="profileEmail">-</span></p>
+  <a href="frontpage.html" style="color: #000; font-weight: 800; text-align: left;" ><i class="fas fa-right-from-bracket"></i>
+Logout</a>
+</div>
+
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <div class="checkmark-circle">
+  <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+    <circle class="checkmark-circle-bg" cx="26" cy="26" r="25" fill="none"/>
+    <path class="checkmark-check" fill="none" d="M14 27l7 7 17-17"/>
+  </svg>
+
+
+      </div>
+      <h1>Booking Confirmed!</h1>
+      <p>Your hotel reservation has been successfully completed.</p>
+<div class="details" style="margin-top: 30px; text-align: center; font-size: 20px; line-height: 1.8; color: #333;list-style:disc;">
+  <p>🎉 <strong>Thank you for choosing Tripzy!</strong></p>
+
+  <p>Dear <strong>Traveler</strong>,</p>
+
+  <p>We’re thrilled to have you on board for your next journey. Whether you’re looking to relax in the hills, explore a vibrant city, or just enjoy a peaceful escape — we've got you covered!</p>
+
+  <p>Our team is already working behind the scenes to match your preferences with the best hotels and exclusive offers tailored just for you. 🏨💼</p>
+
+  <p>💡 <strong>What happens next?</strong></p>
+  <ul style="margin-left: -200px;">
+    <li>🗺️ We'll show you personalized results based on your selected location and budget.</li>
+    <li>📩 You can expect updates, deals, and recommendations right here.</li>
+    <li>📞 Need help? Our 24/7 support team is just a click away.</li>
+  </ul>
+
+  <p>Remember, at Tripzy, we believe that travel should be <em>easy, exciting, and stress-free</em>. So sit back and let us help you plan your perfect stay.</p>
+
+  <p>✈️ <strong>Wishing you safe travels and memorable moments!</strong></p>
+
+  <p style="margin-top: 25px;"><strong>– Team Tripzy 💙</strong></p>
+</div>
+
+
+
+<style>
+  .payment-section {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    margin: 40px auto;
+    max-width: 100%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  }
+
+  .payment-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+  }
+
+  .qr-code {
+    width: 160px;
+    height: 160px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+
+  .payment-details {
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .payment-details button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .payment-details button:hover {
+    background-color: #218838;
+  }
+</style>
+
+<script>
+  function markPaid() {
+    alert("✅ Payment marked as completed. Thank you for booking with Tripzy!");
+    // Optionally redirect or change status
+  }
+</script>
+
+
+
+      <a href="explore.html" class="home-btn">Back to Home</a>
+
+      <button onclick="downloadReceipt()" style="padding: 13px 20px; padding-top: 15px; background-color: #28a745; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">
+  <i class="fas fa-download"></i> Download Receipt
+</button>
+
+
+    </div>
+  
+
+  </div>
+</div>
+
+
+<!--icon-->
+
+ <script>
+  // Get elements
+  const userIcon = document.getElementById("userIcon");
+  const profileBox = document.getElementById("userProfileBox");
+  const usernameSpan = document.getElementById("profileUsername");
+  const emailSpan = document.getElementById("profileEmail");
+
+  // Fetch user from localStorage
+  const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+  // Set user details if available
+  if (storedUser) {
+    usernameSpan.textContent = storedUser.username;
+    emailSpan.textContent = storedUser.email;
+  }
+
+  // Toggle profile box on icon click
+  userIcon.addEventListener("click", () => {
+    profileBox.style.display = profileBox.style.display === "none" ? "block" : "none";
+  });
+
+  // Optional: Hide when clicking outside
+  window.addEventListener("click", function (e) {
+    if (!userIcon.contains(e.target) && !profileBox.contains(e.target)) {
+      profileBox.style.display = "none";
+    }
+  });
+</script>
+
+
+<script>
+  async function downloadReceipt() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const user = JSON.parse(localStorage.getItem("registeredUser")) || {};
+    const username = user.username || "Valued Traveler";
+
+    doc.setFontSize(18);
+    doc.text("Tripzy Booking Receipt", 20, 20);
+
+    doc.setFontSize(12);
+    doc.text(`Dear ${username},`, 20, 40);
+
+    const message = `Thank you for choosing Tripzy as your travel companion. We're excited to be a part of your journey!
+
+You’ve just taken the first step toward an unforgettable experience. Whether you're exploring vibrant cities, relaxing on beaches, or climbing mountains — we’re here to make your travel stress-free and memorable.
+
+Your trust means the world to us, and we promise to provide you with the best possible service every step of the way.
+
+Wishing you a safe, happy, and thrilling trip ahead!
+
+Warm regards,
+                                                                                                    — The Tripzy Team `;
+
+    const lines = doc.splitTextToSize(message, 170);
+    doc.text(lines, 20, 50);
+
+    doc.save("Tripzy_Receipt.pdf");
+  }
+</script>
+
+
+
+</body>
+</html>
+
