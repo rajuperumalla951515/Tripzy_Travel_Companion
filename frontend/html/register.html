@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Page</title>
+    <link rel="stylesheet" href="../css/styl.css">
+    <link rel="stylesheet" href="../css/annimation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+        }
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            background-image: url('../images/955115.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #sectionbox {
+            width: 90%;
+            height: 90vh;
+            border: 1px solid white;
+            border-radius: 20px;
+            background: linear-gradient(transparent 50%, rgb(1, 119, 165));
+            backdrop-filter: blur(10px);
+        }
+        header {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #navitems {
+            font-size: 18px;
+            font-weight: 789;
+            text-transform: capitalize;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            text-shadow: 2px 2px 7px #000;
+            z-index: 99;
+            padding: 5px 10px;
+            border-radius: 10px;
+            transition: 0.3s ease;
+        }
+        #navitems:hover {
+            background-color: #ffffff42;
+        }
+        a {
+            color: #fff;
+        }
+        i {
+            margin-left: 5px;
+        }
+
+        .registerbox {
+            position: absolute;
+            left: 850px;
+            top: 100px;
+        }
+        .register-container {
+            
+            text-align: center;
+            background: linear-gradient( #6dc5c562);
+            padding: 2rem;
+            border-radius: 8px;
+            width: 400px;
+            height: auto;
+            border: 1px solid white;
+        }
+        .register-container h2 {
+            color: rgb(239, 244, 239);
+            margin-bottom: 1.5rem;
+        }
+        .register-container input[type="text"],
+        .register-container input[type="email"],
+        .register-container input[type="password"] {
+            align-items: center;
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.4rem -0.8rem;
+            background-color: transparent;
+            border-radius: 4px;
+        }
+        .regbtn {
+            text-decoration: none;
+            width: 150px;
+            padding: 0.8rem;
+            background: linear-gradient( to right , rgb(29, 215, 221) , rgb(41, 134, 201));
+            color: rgb(255, 255, 255);
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 900;
+            transition: 0.28s ease-in-out;
+        }
+        .regbtn:hover {
+             background: linear-gradient( to left , rgb(243, 245, 245) , rgb(244, 245, 245));
+            color: #080000;
+            
+        }
+
+        .earth {
+            position: absolute;
+            left: 160px;
+            animation: earth 120s linear infinite;
+            width: 500px;
+        }
+
+        .leaf {
+            width: 400px;
+            z-index: 9999;
+            position: absolute;
+            bottom: 30px;
+            transition: 0.2s ease-in;
+        }
+        .leaf:hover {
+            scale: 1.1;
+        }
+        .leafy {
+            z-index: -999;
+            width: 250px;
+            filter: blur(3px);
+            position: absolute;
+            top: 20px;
+            left: 60px;
+        }
+
+        .anni {
+            width: 200px;
+            z-index: 9999999;
+            position: absolute;
+            bottom: 0px;
+            left: 600px;
+        }
+
+        @keyframes earth {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .texty {
+            position: absolute;
+            bottom: 30px;
+            left: 150px;
+            background-color: #fff;
+            width: 550px;
+            padding-left: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section id="main">
+        <div id="sectionbox">
+            <header>
+               <a id="navitems"  href="frontpage.html"><i style="margin-right: 5px;" class="fas fa-home"></i> Home </a>
+            </header>
+
+            <img src="../images/flight.png" class="leaf">
+            <img src="../images/jack.png" class="anni">
+            <img src="../images/earth.png" class="earth">
+            <img src="../images/flight2.png" class="leafy">
+            <h3 class="texty">Welcome..! Please register to explore more features 🚀</h3>
+
+            <div class="registerbox">
+                <div class="register-container">
+                    <h2>Register</h2>
+                    <form action="#" method="post">
+                        <input type="text" name="username" style="border: 1px solid white;" placeholder="Username" required>
+                        <input type="email" id="email" name="email" style="border: 1px solid white;" readonly>
+                        <input type="password" name="password" style="border: 1px solid white;" placeholder="Password" required>
+                        <input type="password" name="confirmPassword" style="border: 1px solid white;" placeholder="Confirm Password" required>
+                        <div class="register">
+                            <button type="submit" class="regbtn">Register</button>
+                        </div>
+                        <style>
+  input::placeholder {
+    color: rgb(255, 255, 255); 
+    opacity: 1; 
+  }
+</style>
+
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+<script>
+    const emailInput = document.getElementById("email");
+  const storedEmail = sessionStorage.getItem("verifiedEmail");
+  if (storedEmail) {
+    emailInput.value = storedEmail;
+}
+</script>
+    <script>
+    document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault(); 
+
+        
+        const username = document.querySelector('input[name="username"]').value.trim();
+        const email = document.querySelector('input[name="email"]').value.trim();
+        const password = document.querySelector('input[name="password"]').value;
+        const confirmPassword = document.querySelector('input[name="confirmPassword"]').value;
+
+        
+        if (!username || !email || !password || !confirmPassword) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        
+        const user = { username, email, password };
+        localStorage.setItem("registeredUser", JSON.stringify(user));
+
+        alert("Registration successful! You can Explore now.");
+
+        
+        window.location.href = "home.html";
+    });
+</script>
+
+</body>
+</html>
+

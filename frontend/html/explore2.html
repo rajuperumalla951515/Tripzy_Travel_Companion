@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore</title>
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+
+    
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body {
+       font-family: "Poppins", sans-serif;
+      background: #f9f9f9;
+      text-align: center;
+    
+    }
+
+    #searchResult {
+        border-radius: 20px;
+        align-content: center;
+        text-align: left;
+        padding-left: 17px;
+      font-size: 20px;
+      color: #ffffff;
+      background: linear-gradient(to right, #000428, #004e92);
+      width: 1485px;
+      height: 60px;
+      margin: 10px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!---searh after-->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #102335;
+    }
+
+    header {
+      margin: 5px 10px;
+      border-radius: 20px;
+      background: linear-gradient(to right, #000428, #004e92);
+      padding: 0 50px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      position: relative;
+    }
+
+    header h2 {
+      scale: 1.5;
+      margin: 0;
+    }
+
+    header h2 span {
+      color: greenyellow;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      margin: 50px;
+      flex-wrap: wrap;
+      
+    }
+
+    .nav-left i {
+      margin-right: 6px;
+    }
+
+    .nav-left div {
+      padding: 10px 10px;
+      color: white;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .nav-left div:hover {
+      outline: 1px solid white;
+      border-radius: 30px;
+    }
+
+    .nav-left img {
+      height: 20px;
+      margin-left: 10px;
+    }
+
+    .user-logo {
+      width: 30px;
+      height: 30px;
+      background-color: #febb02;
+      border-radius: 50%;
+      color: black;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 30px;
+      font-size: 14px;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .user-info-popup {
+      display: none;
+      position: absolute;
+      right: 40px;
+      top: 75px;
+      background: rgb(0, 0, 0);
+      color: rgb(0, 0, 0);
+      padding: 12px 16px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      width: 220px;
+      font-size: 14px;
+    }
+
+    .user-info-popup p {
+      margin: 5px 0;
+    }
+
+
+    
+    .trending-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      height: 90%;
+      margin: 10px 10px;
+      border-radius: 30px;
+      box-shadow: 2px 2px 80px rgba(0, 0, 0, 0.614);
+background: linear-gradient(135deg, #dbefff, #a1c4fd, #c2e9fb);
+
+    }
+
+    .trend{
+      box-shadow: 2px 2px 80px rgba(0, 0, 0, 0.614);
+      border-radius: 20px;
+      padding: 20px 40px;
+      height: 90%;
+      width: 90%;
+      background: linear-gradient(135deg, #1c92d2, #f2fcfe);
+
+      
+    }
+
+    .trending-section h2 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    .subtext {
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .destination-card {
+      position: relative;
+      height: 200px;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .destination-card:hover {
+      transform: scale(1.03);
+    }
+
+    .destination-card span {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .features-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  background-color:transparent;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card img {
+  width: 60px;
+  height: 60px;
+}
+
+.feature-card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+
+a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+
+  </style>
+  <script>
+    function toggleGuestOptions() {
+      const guestBox = document.querySelector('.guest-options');
+      guestBox.style.display = guestBox.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function performSearch() {
+      const location = document.querySelector('#locationSelect').value;
+      const date = document.querySelector('.search-box input[type="date"]').value;
+      const adults = document.getElementById('adults').value;
+      const children = document.getElementById('children').value;
+      const rooms = document.getElementById('rooms').value;
+      const pets = document.querySelector('.guest-options input[type="checkbox"]').checked;
+
+      const passengerData = {
+        location,
+        date,
+        adults,
+        children,
+        rooms,
+        pets
+      };
+      localStorage.setItem('passengerDetails', JSON.stringify(passengerData));
+      window.location.href = 'Tripzy_home.html';
+    }
+
+    function updateGuestInput() {
+      const adults = document.getElementById('adults').value;
+      const children = document.getElementById('children').value;
+      const rooms = document.getElementById('rooms').value;
+      document.getElementById('guestInput').value = `${adults} adults · ${children} children · ${rooms} room${rooms > 1 ? 's' : ''}`;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const navItems = document.querySelectorAll(".nav-left div");
+      navItems[0].addEventListener("click", () => {
+        document.querySelector(".trending-section").scrollIntoView({ behavior: "smooth" });
+      });
+      navItems[1].addEventListener("click", () => {
+        document.querySelector(".scroll-section").scrollIntoView({ behavior: "smooth" });
+      });
+
+      const gmail = "devraj@example.com";
+      const firstLetter = gmail[0] || "U";
+      document.getElementById("userLogo").textContent = firstLetter;
+
+
+      const userLogo = document.getElementById("userLogo");
+      const userInfo = document.getElementById("userInfo");
+
+      userLogo.addEventListener("click", () => {
+        userInfo.style.display = userInfo.style.display === "block" ? "none" : "block";
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!userLogo.contains(e.target) && !userInfo.contains(e.target)) {
+          userInfo.style.display = "none";
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h2><span>Trip</span>zy</h2>
+    <div class="nav-left">
+      <div><i class="fa-solid fa-location-dot"></i>Top Destinations</div>
+      <div><i class="fa-solid fa-percent"></i>Deals & Offers</div>
+      <img src="https://flagcdn.com/w40/in.png" alt="India Flag">
+               
+<div id="userIcon" style="cursor: pointer; position: fixed; top: 15px; right: 30px;">
+  <i class="fas fa-user-circle" style="font-size: 32px; color: white;"></i>
+</div>
+
+
+<div id="userProfileBox" style="display: none; position: fixed; top: 70px; right: 30px; background: white; color: black; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000; ">
+  <p style="text-align: left;"><strong>👤 Username:</strong> <span id="profileUsername">-</span></p>
+  <p><strong>📧 Email:</strong> <span id="profileEmail">-</span></p>
+  <a href="frontpage.html" style="color: #000; font-weight: 800; text-align: left;" ><i class="fas fa-right-from-bracket"></i>
+Logout</a>
+</div>
+  </header>
+
+  
+  <h2 id="searchResult">Loading...</h2>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const location = params.get("location");
+      const budget = params.get("budget");
+
+      const resultText = document.getElementById("searchResult");
+
+      if (location && budget) {
+        resultText.innerText = `Finding affordable ways to explore ${location} under ₹${budget}...`;
+      } else {
+        resultText.innerText = "No search data found.";
+      }
+    });
+  </script>
+
+  <section class="trending-section" >
+  <div class="trend">
+    <h2 id="trendingHeading">Trending Hotels</h2>
+    <p class="subtext">Travellers searching for Hotels also booked these</p>
+
+   <div style="display: flex; padding: 20px 50px; border-radius: 20px; background: #f5f5f5; gap: 20px; font-family: 'Poppins', sans-serif;">
+
+  <!-- Left Column (Map + Filters) -->
+  <div style="width: 300px;">
+
+    <!-- Map Section -->
+    <div style="height: 250px; border-radius: 12px; overflow: hidden; margin-bottom: 20px;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.742914914293!2d79.8261810758414!3d12.017121087616883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5361e4e5ff5fc7%3A0x6b20c34bc85ecaf2!2sRock%20Beach!5e0!3m2!1sen!2sin!4v1700223647083!5m2!1sen!2sin" 
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Filter Box -->
+    <div style="background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+       <h4 style="margin-bottom: 10px;">Filter by:</h4>
+
+  <div style="margin-bottom: 15px;">
+    <strong>Your previous filters</strong><br>
+    <label><input type="checkbox"> Apartments (3)</label>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <strong>Your budget (per night)</strong><br>
+    <p style="font-size: 14px;">₹ <span id="budgetValue">200</span></p>
+    <input type="range" min="100" max="2000" value="200" id="budgetRange" style="width: 100%;">
+  </div>
+</div>
+
+<script>
+  const budgetSlider = document.getElementById("budgetRange");
+  const budgetValue = document.getElementById("budgetValue");
+
+  budgetSlider.addEventListener("input", () => {
+    budgetValue.textContent = budgetSlider.value;
+   
+  });
+</script>
+  </div>
+
+
+
+
+
+  <!-- Right Column (Results List) -->
+
+ <div style="flex-grow: 1;">
+  <h2 style="margin-bottom: 15px;" id="results-heading">Location: loading...</h2>
+ 
+  <!-- Sort and View Mode -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <button style="padding: 5px 15px; border: 1px solid #ccc; border-radius: 20px; background: white; cursor: pointer;">⬍ Sort by: Our top picks</button>
+    <div>
+      <button style="margin-right: 5px; padding: 5px 10px; border: 1px solid #ccc; border-radius: 5px;">List</button>
+      
+    </div>
+  </div>
+<div class="htlbox" style="display: table-row;">
+  <!-- Hotel Card 1 -->
+  <div style="background: #e9f3ff; width: 900px; border-radius: 12px; padding: 10px; display: flex; margin-bottom: 25px;">
+    <img src="../images/htl10.jpg" alt="Hotel Image"
+         style="width: 250px; height: 300px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
+    <div style="flex-grow: 1;">
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <a href="#" style="text-decoration: none; color: #0071c2;">
+            <h3 style="margin: 0; text-align: left;">Fantastic 4 Homestay</h3>
+          </a>
+          <p style="margin: 5px 0;">
+            <a href="#" style="color: #0071c2;" class="hotel-location">Loading...</a> · Beach nearby · 0.8 km from centre
+          </p>
+          <p style="color: red; font-weight: bold; text-align: left;">Only 2 left at this price on our site</p>
+        </div>
+        <div>
+          <span style="background: #ffb700; padding: 4px 8px; border-radius: 5px; font-size: 12px;">Mostly Visited</span>
+        </div>
+      </div>
+      <p style="margin-top: 10px; text-align: left;">One-Bedroom Apartment · 4 single beds</p>
+      <p style="text-align: left;">1 night, 2 adults</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+        <div>
+          <p style="margin: 0; text-decoration: line-through; color: #888; text-align: left;">₹1,836</p>
+          <p style="margin: 0; font-size: 20px; color: #0071c2; font-weight: bold; margin-top: -25px; margin-left: 5px;">₹1,469</p>
+          <p style="font-size: 13px;margin-top: -5px;">+ ₹176 taxes and charges</p>
+        </div>
+        <button style="padding: 10px 20px; background: #0071c2; color: white; border-radius: 5px; border: none; cursor: pointer;" onclick="bookNow('Hotel Taj Gateway')" >BOOK NOW</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hotel Card 2 -->
+  <div style="background: #e9f3ff; border-radius: 12px; padding: 10px; display: flex; margin-bottom: 25px;">
+    <img src="../images/htl11.jpg" alt="Hotel Image"
+         style="width: 250px; height: 300px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
+    <div style="flex-grow: 1;">
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <a href="#" style="text-decoration: none; color: #0071c2;">
+            <h3 style="margin: 0; text-align: left;">Green Leaf Resort</h3>
+          </a>
+          <p style="margin: 5px 0;">
+            <a href="#" style="color: #0071c2;" class="hotel-location">Loading...</a> · Hillside view · 2.1 km from centre
+          </p>
+          <p style="color: red; font-weight: bold; text-align: left;">Booked 3 times today</p>
+        </div>
+        <div>
+          <span style="background: #ffb700; padding: 4px 8px; border-radius: 5px; font-size: 12px;">Top pick</span>
+        </div>
+      </div>
+      <p style="margin-top: 10px; text-align: left;">Deluxe Room · King-size bed</p>
+      <p style="text-align: left;">1 night, 2 adults</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+        <div>
+          <p style="margin: 0; text-decoration: line-through; color: #888; text-align: left;">₹3,200</p>
+          <p style="margin: 0; font-size: 20px; color: #0071c2; font-weight: bold; margin-top: -25px; padding-left: 10px;">₹1,850</p>
+          <p style="font-size: 13px;margin-top: -5px;">+ ₹312 taxes and charges</p>
+        </div>
+        <button style="padding: 10px 20px; background: #0071c2; color: white; border-radius: 5px; border: none; cursor: pointer;" onclick="bookNow('Hotel Taj Gateway')" >BOOK NOW</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hotel Card 3 -->
+  <div style="background: #e9f3ff; border-radius: 12px; padding: 10px; display: flex; margin-bottom: 25px;">
+    <img src="../images/htl2.jpg" alt="Hotel Image"
+         style="width: 250px; height: 300px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
+    <div style="flex-grow: 1;">
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <a href="#" style="text-decoration: none; color: #0071c2;">
+            <h3 style="margin: 0; text-align: left;">Ocean Pearl Inn</h3>
+          </a>
+          <p style="margin: 5px 0;">
+            <a href="#" style="color: #0071c2;" class="hotel-location">Loading...</a> · Middle of the city · 1.2 km from Airport
+          </p>
+          <p style="color: red; font-weight: bold; text-align: left;">Last booked 1 hour ago</p>
+        </div>
+        <div>
+          <span style="background: #ffb700; padding: 4px 8px; border-radius: 5px; font-size: 12px;">Free cancellation</span>
+        </div>
+      </div>
+      <p style="margin-top: 10px; text-align: left;">Double Room · Queen bed</p>
+      <p style="text-align: left;">1 night, 2 adults</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+        <div>
+          <p style="margin: 0; text-decoration: line-through; color: #888; text-align: left;">₹2,400</p>
+          <p style="margin: 0; font-size: 20px; color: #0071c2; font-weight: bold; margin-top: -25px; padding-left: 10px;">₹999</p>
+          <p style="font-size: 13px;margin-top: -5px;">+ ₹224 taxes and charges</p>
+        </div>
+        <button style="padding: 10px 20px; background: #0071c2; color: white; border-radius: 5px; border: none; cursor: pointer;" onclick="bookNow('Hotel Taj Gateway')" >BOOK NOW</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hotel Card 4 -->
+  <div style="background: #e9f3ff; border-radius: 12px; padding: 10px; display: flex; margin-bottom: 25px;">
+    <img src="../images/htl8.jpg" alt="Hotel Image"
+         style="width: 250px; height: 300px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
+    <div style="flex-grow: 1;">
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <a href="#" style="text-decoration: none; color: #0071c2;">
+            <h3 style="margin: 0; text-align: left;">Ocean Pearl Inn</h3>
+          </a>
+          <p style="margin: 5px 0;">
+            <a href="#" style="color: #0071c2;" class="hotel-location">Loading...</a> · Sea view · 1.2 km from beach
+          </p>
+          <p style="color: red; font-weight: bold; text-align: left;">Last booked 1 hour ago</p>
+        </div>
+        <div>
+          <span style="background: #ffb700; padding: 4px 8px; border-radius: 5px; font-size: 12px;">Free cancellation</span>
+        </div>
+      </div>
+      <p style="margin-top: 10px; text-align: left;">Double Room · Queen bed</p>
+      <p style="text-align: left;">1 night, 2 adults</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+        <div>
+          <p style="margin: 0; text-decoration: line-through; color: #888; text-align: left;">₹2,400</p>
+          <p style="margin: 0; font-size: 20px; color: #0071c2; font-weight: bold; margin-top: -25px; padding-left: 10px;">₹1,099</p>
+          <p style="font-size: 13px;margin-top: -5px;">+ ₹224 taxes and charges</p>
+        </div>
+        <button style="padding: 10px 20px; background: #0071c2; color: white; border-radius: 5px; border: none; cursor: pointer;" onclick="bookNow('Hotel Taj Gateway')" >BOOK NOW</button>
+      </div>
+    </div>
+  </div>
+
+   <!-- Hotel Card 5 -->
+  <div style="background: #e9f3ff; border-radius: 12px; padding: 10px; display: flex; margin-bottom: 25px;">
+    <img src="../images/htl7.jpg" alt="Hotel Image"
+         style="width: 250px; height: 300px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
+    <div style="flex-grow: 1;">
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <a href="#" style="text-decoration: none; color: #0071c2;">
+            <h3 style="margin: 0; text-align: left;">Cityscape Residency</h3>
+          </a>
+          <p style="margin: 5px 0;">
+            <a href="#" style="color: #0071c2;" class="hotel-location">Loading...</a> · Near City Center · 1.5 km from metro
+          </p>
+          <p style="color: red; font-weight: bold; text-align: left;">Booked 5 times today</p>
+        </div>
+        <div>
+          <span style="background: #ffb700; padding: 4px 8px; border-radius: 5px; font-size: 12px;">Trending</span>
+        </div>
+      </div>
+      <p style="margin-top: 10px; text-align: left;">Executive Room · Queen bed</p>
+      <p style="text-align: left;">1 night, 2 adults</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+        <div>
+          <p style="margin: 0; text-decoration: line-through; color: #888; text-align: left;">₹2,900</p>
+          <p style="margin: 0; font-size: 20px; color: #0071c2; font-weight: bold; margin-top: -25px; padding-left: 10px;">₹1,099</p>
+          <p style="font-size: 13px;margin-top: -5px;">+ ₹260 taxes and charges</p>
+        </div>
+        <button style="padding: 10px 20px; background: #0071c2; color: white; border-radius: 5px; border: none; cursor: pointer;" onclick="bookNow('Hotel Taj Gateway')" >BOOK NOW</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hotel Card 6 -->
+  <div style="background: #e9f3ff; border-radius: 12px; padding: 10px; display: flex; margin-bottom: 25px;">
+    <img src="../images/htl1.jpg" alt="Hotel Image"
+         style="width: 250px; height: 300px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
+    <div style="flex-grow: 1;">
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <a href="#" style="text-decoration: none; color: #0071c2;">
+            <h3 style="margin: 0; text-align: left;">Palm Grove Inn</h3>
+          </a>
+          <p style="margin: 5px 0;">
+            <a href="#" style="color: #0071c2;" class="hotel-location">Loading...</a> · Garden view · 3 km from downtown
+          </p>
+          <p style="color: red; font-weight: bold; text-align: left;">Great for couples</p>
+        </div>
+        <div>
+          <span style="background: #ffb700; padding: 4px 8px; border-radius: 5px; font-size: 12px;">Guest favorite</span>
+        </div>
+      </div>
+      <p style="margin-top: 10px; text-align: left;">Suite · King bed</p>
+      <p style="text-align: left;">1 night, 2 adults</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+        <div>
+          <p style="margin: 0; text-decoration: line-through; color: #888; text-align: left;">₹3,500</p>
+          <p style="margin: 0; font-size: 20px; color: #0071c2; font-weight: bold; margin-top: -25px; padding-left: 10px;">₹1,399</p>
+          <p style="font-size: 13px;margin-top: -5px;">+ ₹310 taxes and charges</p>
+        </div>
+        <button style="padding: 10px 20px; background: #0071c2; color: white; border-radius: 5px; border: none; cursor: pointer;" onclick="bookNow('Hotel Taj Gateway')" >BOOK NOW</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hotel Card 7 -->
+  <div style="background: #e9f3ff; border-radius: 12px; padding: 10px; display: flex; margin-bottom: 25px;">
+    <img src="../images/htl4.jpg" alt="Hotel Image"
+         style="width: 250px; height: 300px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
+    <div style="flex-grow: 1;">
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <a href="#" style="text-decoration: none; color: #0071c2;">
+            <h3 style="margin: 0; text-align: left;">Silver Sands Hotel</h3>
+          </a>
+          <p style="margin: 5px 0;">
+            <a href="#" style="color: #0071c2;" class="hotel-location">Loading...</a> · Walkable to beach · 0.3 km from shore
+          </p>
+          <p style="color: red; font-weight: bold; text-align: left;">Only 3 rooms left</p>
+        </div>
+        <div>
+          <span style="background: #ffb700; padding: 4px 8px; border-radius: 5px; font-size: 12px;">Beachside pick</span>
+        </div>
+      </div>
+      <p style="margin-top: 10px; text-align: left;">Beach View · Twin beds</p>
+      <p style="text-align: left;">1 night, 2 adults</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+        <div>
+          <p style="margin: 0; text-decoration: line-through; color: #888; text-align: left;">₹2,800</p>
+          <p style="margin: 0; font-size: 20px; color: #0071c2; font-weight: bold; margin-top: -25px; padding-left: 10px;">₹1,199</p>
+          <p style="font-size: 13px;margin-top: -5px;">+ ₹250 taxes and charges</p>
+        </div>
+        <button style="padding: 10px 20px; background: #0071c2; color: white; border-radius: 5px; border: none; cursor: pointer;" onclick="bookNow('Hotel Taj Gateway')" >BOOK NOW</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hotel Card 8 -->
+  <div style="background: #e9f3ff; border-radius: 12px; padding: 10px; display: flex; margin-bottom: 25px;">
+    <img src="../images/htl3.jpg" alt="Hotel Image"
+         style="width: 250px; height: 300px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
+    <div style="flex-grow: 1;">
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <a href="#" style="text-decoration: none; color: #0071c2;">
+            <h3 style="margin: 0; text-align: left;">Royal Orchid Stay</h3>
+          </a>
+          <p style="margin: 5px 0;">
+            <a href="#" style="color: #0071c2;" class="hotel-location">Loading...</a> · Close to IT Hub · 0.6 km from station
+          </p>
+          <p style="color: red; font-weight: bold; text-align: left;">Top-rated in this area</p>
+        </div>
+        <div>
+          <span style="background: #ffb700; padding: 4px 8px; border-radius: 5px; font-size: 12px;">Best value</span>
+        </div>
+      </div>
+      <p style="margin-top: 10px; text-align: left;">Luxury Suite · King bed</p>
+      <p style="text-align: left;">1 night, 2 adults</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+        <div>
+          <p style="margin: 0; text-decoration: line-through; color: #888; text-align: left;">₹4,000</p>
+          <p style="margin: 0; font-size: 20px; color: #0071c2; font-weight: bold; margin-top: -25px; padding-left: 10px;">₹1,299</p>
+          <p style="font-size: 13px;margin-top: -5px;">+ ₹380 taxes and charges</p>
+        </div>
+        <button style="padding: 10px 20px; background: #0071c2; color: white; border-radius: 5px; border: none; cursor: pointer;" onclick="bookNow('Hotel Taj Gateway')" >BOOK NOW</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+<script>
+  function bookNow(hotelName) {
+    localStorage.setItem('selectedHotel', hotelName);
+    window.location.href = 'booking-confirmed.html';
+  }
+</script>
+
+
+
+<style>
+  .hotel-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.5s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('#hotel-list-container .hotel-card');
+
+    cards.forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.4}s`;
+    });
+  });
+</script>
+
+
+<script> 
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const location = params.get("location") || "Unknown Location";
+
+   
+    const headingEl = document.getElementById("results-heading");
+    if (headingEl) {
+      headingEl.textContent = `${location}: Properties found`;
+    }
+
+    
+    const hotelLocElements = document.querySelectorAll(".hotel-location");
+    hotelLocElements.forEach(el => {
+      el.textContent = location;
+    });
+  });
+</script>
+
+
+
+
+    <script>
+  document.querySelectorAll('.destination-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const destinationLink = card.getAttribute('data-link');
+      if (destinationLink) {
+        window.location.href = destinationLink;
+      } else {
+        alert('No link found for this destination.');
+      }
+    });
+  });
+</script>
+
+
+<!--last-->
+
+
+
+<script>
+  function bookNow(hotelName) {
+
+    localStorage.setItem("bookedHotel", hotelName);
+    
+    
+    window.location.href = "booking-confirmed.html";
+  }
+</script>
+
+
+<!--icon-->
+
+ <script>
+ 
+  const userIcon = document.getElementById("userIcon");
+  const profileBox = document.getElementById("userProfileBox");
+  const usernameSpan = document.getElementById("profileUsername");
+  const emailSpan = document.getElementById("profileEmail");
+
+  
+  const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+  
+  if (storedUser) {
+    usernameSpan.textContent = storedUser.username;
+    emailSpan.textContent = storedUser.email;
+  }
+
+
+  userIcon.addEventListener("click", () => {
+    profileBox.style.display = profileBox.style.display === "none" ? "block" : "none";
+  });
+
+ 
+  window.addEventListener("click", function (e) {
+    if (!userIcon.contains(e.target) && !profileBox.contains(e.target)) {
+      profileBox.style.display = "none";
+    }
+  });
+</script>
+
+
+</body>
+</html>
+

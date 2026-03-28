@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - Tripzy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+background: linear-gradient(to left, #1F1C2C, #2D2D4D, #3C8DAD);
+
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      animation: fadeInTop 1s ease forwards;
+    }
+
+    a#navitems {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 20px;
+      transition: 0.3s ease;
+    }
+
+    a#navitems:hover {
+      color: #00ffe5;
+    }
+
+    .container {
+      border-radius: 20px;
+      box-shadow: 2px 2px 50px black;
+      display: flex;
+      flex-wrap: wrap;
+      height: 90%;
+      width: 90%;
+      margin: 80px;
+      margin-top: 30px;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 50px 80px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .left-section {
+      flex: 1;
+      min-width: 300px;
+      animation: slideInLeft 1.2s ease forwards;
+    }
+
+    .left-section img {
+      width: 300px;
+      animation: rotateEarth 60s linear infinite;
+    }
+
+    .left-section h3 {
+      margin-top: 20px;
+      background-color: #00ffe5;
+      color: #000;
+      padding: 10px 15px;
+      border-radius: 8px;
+      width: fit-content;
+      font-weight: 700;
+      animation: pulse 2s infinite;
+    }
+
+    .right-section {
+      flex: 2;
+      min-width: 400px;
+      margin-left: 50px;
+      animation: slideInRight 1.5s ease forwards;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .info-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 20px;
+      border: 2px solid #096f65;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(0, 21, 19, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(0, 13, 12, 0.6);
+    }
+
+    .info-card h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #00ffe5;
+    }
+
+    .info-card p,
+    .info-card li {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .info-card ul {
+      padding-left: 20px;
+    }
+
+    .info-card li {
+      margin: 8px 0;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      font-size: 22px;
+      margin-right: 15px;
+      color: white;
+      transition: 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #00ffe5;
+      transform: scale(1.2);
+    }
+
+  
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInTop {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes rotateEarth {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0,255,255, 0.7); }
+      70% { box-shadow: 0 0 0 20px rgba(0,255,255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0,255,255, 0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in-up { animation: fadeInUp 1.2s ease forwards; }
+    .animate-fade-in-left { animation: fadeInLeft 1.2s ease forwards; }
+    .animate-fade-in-right { animation: fadeInRight 1.2s ease forwards; }
+    .animate-fade-in-down { animation: fadeInDown 1.2s ease forwards; }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 30px 20px;
+      }
+
+      .right-section {
+        margin-left: 0;
+        margin-top: 30px;
+      }
+
+      .left-section img {
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="home.html" id="navitems"><i class="fa-solid fa-arrow-left"></i> Back</a>
+  </header>
+
+  <div class="container">
+    <div class="left-section">
+      <img src="../images/earth.png" alt="Rotating Earth">
+      <h3>We're Always Here for You 🌍</h3>
+    </div>
+
+    <div class="right-section">
+      <div class="info-grid">
+        <!-- About Tripzy -->
+        <div class="info-card animate-fade-in-up">
+          <h2><i class="fa-solid fa-circle-info"></i> About Tripzy</h2>
+          <p><strong>Tripzy</strong> is your digital gateway to explore the world with ease. We provide fun, safe, and budget-friendly planning tools to make your dream travel a reality.</p>
+        </div>
+
+        <!-- Mission & Vision -->
+        <div class="info-card animate-fade-in-left">
+          <h2><i class="fa-solid fa-bullseye"></i> Mission & Vision</h2>
+          <p><strong>Mission:</strong> To simplify global travel for all by connecting communities through technology.</p>
+          <p><strong>Vision:</strong> A world where travel is stress-free, accessible, and meaningful for every explorer.</p>
+        </div>
+
+        <!-- Services -->
+        <div class="info-card animate-fade-in-right">
+          <h2><i class="fa-solid fa-list-check"></i> Services</h2>
+          <ul>
+            <li>🧭 Smart Travel Planning</li>
+            <li>📅 Custom Itineraries</li>
+            <li>🗺️ Local Guide Recommendations</li>
+            <li>✈️ Flight & Hotel Comparisons</li>
+            <li>📸 Travel Blogs & Reviews</li>
+          </ul>
+        </div>
+
+        <!-- Contact & Social -->
+        <div class="info-card animate-fade-in-down">
+          <h2><i class="fa-solid fa-address-book"></i> Contact & Social</h2>
+          <p><i class="fa-solid fa-envelope"></i> support@tripzy.com</p>
+          <p><i class="fa-solid fa-phone"></i> +91-9876543210</p>
+          <p><i class="fa-solid fa-location-dot"></i> Wanderlust Towers, Hyderabad</p>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
