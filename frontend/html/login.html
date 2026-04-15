@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - Tripzy OTP</title>
 
   <!-- Fonts & Styles -->
@@ -100,11 +101,9 @@
       z-index: -1;
     }
 
-    
     .loginbox {
       position: absolute;
       right: 80px;
-      
       top: 110px;
     }
     .login-container {
@@ -113,6 +112,40 @@
       border-radius: 8px;
       width: 400px;
       border: 1px solid white;
+    }
+
+    @media (max-width: 768px) {
+      #sectionbox {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 30px;
+      }
+      .earth, .leaf, .leafy, .anni, .texty {
+        display: none;
+      }
+      .loginbox {
+        position: static;
+        margin: 20px auto 0;
+        width: 100%;
+        max-width: 420px;
+        padding: 0 15px;
+      }
+      .login-container {
+        width: 100%;
+      }
+      header {
+        padding: 15px 20px;
+        width: 100%;
+      }
+    }
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 1.5rem 1rem;
+      }
     }
     .login-container h2 {
       color: rgb(239, 244, 239);

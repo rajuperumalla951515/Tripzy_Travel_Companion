@@ -299,7 +299,9 @@
 
     
 .scroll-section {
-  width: 1500px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   border-radius: 30px;
   display: flex;
   justify-content: center;
@@ -625,6 +627,92 @@ background: linear-gradient(135deg, #dbefff, #a1c4fd, #c2e9fb);
   font-weight: 500;
 }
 
+/* ===== EXPLORE PAGE RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .scroll-section {
+    width: auto;
+    margin: 20px 10px;
+  }
+  #searchResult {
+    width: auto;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    height: auto;
+    gap: 10px;
+  }
+  header h2 {
+    scale: 1;
+    font-size: 22px;
+  }
+  .nav-left {
+    margin: 0;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .nav-left div {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+  .search-section {
+    padding: 30px 15px 50px;
+    margin: 5px;
+  }
+  .search-section h1 {
+    font-size: 24px;
+    margin-left: 0;
+  }
+  .search-section p {
+    font-size: 14px;
+    margin-left: 0;
+  }
+  .search-box {
+    flex-direction: column;
+    max-width: 100%;
+    padding: 10px;
+  }
+  .search-box > div {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    min-width: unset;
+    width: 100%;
+  }
+  .search-box > div:last-child {
+    border-bottom: none;
+  }
+  .guest-options {
+    margin-left: 0;
+  }
+  .scroll-section {
+    width: auto;
+    margin: 15px 5px;
+  }
+  #searchResult {
+    width: auto;
+    margin: 5px;
+    font-size: 14px;
+  }
+  .footer-columns {
+    margin-left: 0;
+  }
+  #userIcon {
+    right: 10px !important;
+  }
+  #userProfileBox {
+    right: 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  header h2 { font-size: 18px; }
+  .search-section h1 { font-size: 20px; }
+  .search-section p { font-size: 12px; }
+}
 
   </style>
   <script>

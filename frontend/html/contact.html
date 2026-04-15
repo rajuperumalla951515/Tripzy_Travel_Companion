@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Tripzy</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -47,8 +48,7 @@ background: linear-gradient(to left, #1F1C2C, #2D2D4D, #3C8DAD);
       flex-wrap: wrap;
       height: 90%;
       width: 90%;
-      margin: 80px;
-      margin-top: 30px;
+      margin: 30px auto;
       justify-content: space-between;
       align-items: flex-start;
       padding: 50px 80px;
@@ -202,16 +202,38 @@ background: linear-gradient(to left, #1F1C2C, #2D2D4D, #3C8DAD);
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
-        padding: 30px 20px;
+        padding: 20px 15px;
+        width: 95%;
+        margin: 15px auto;
       }
 
       .right-section {
         margin-left: 0;
-        margin-top: 30px;
+        margin-top: 20px;
+        min-width: unset;
+        width: 100%;
+      }
+
+      .left-section {
+        min-width: unset;
+        width: 100%;
       }
 
       .left-section img {
-        width: 200px;
+        width: 150px;
+      }
+
+      header {
+        padding: 15px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        padding: 15px 10px;
       }
     }
   </style>
