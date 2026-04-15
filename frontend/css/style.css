@@ -694,13 +694,13 @@ i{
   .select-container {
     position: static;
     display: block;
-    scale: 1;
+    transform: scale(1);
     margin: 10px 0;
   }
   .select-container2 {
     position: static;
     display: block;
-    scale: 1;
+    transform: scale(1);
     margin: 10px 0;
   }
 

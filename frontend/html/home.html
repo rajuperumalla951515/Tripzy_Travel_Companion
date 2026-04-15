@@ -649,6 +649,7 @@ i{
         });
         hamburgerBtn.addEventListener("keydown", function(e) {
           if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
             mainNav.classList.toggle("open");
             hamburgerBtn.classList.toggle("active");
           }
