@@ -115,6 +115,53 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ===== BOOKING CONFIRMED RESPONSIVE ===== */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    height: auto;
+    gap: 10px;
+  }
+  header h2 {
+    scale: 1;
+    font-size: 22px;
+  }
+  .nav-left {
+    margin: 0;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .nav-left div {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+  .card {
+    margin: 10px;
+  }
+  .details {
+    font-size: 16px !important;
+  }
+  .payment-box {
+    flex-direction: column;
+    align-items: center;
+  }
+  .payment-details {
+    width: 100%;
+  }
+  #userIcon {
+    right: 10px !important;
+  }
+  #userProfileBox {
+    right: 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  header h2 { font-size: 18px; }
+  .card h1 { font-size: 22px; }
+}
+
 
 header {
       margin: 5px 10px;
@@ -337,7 +384,7 @@ Logout</a>
 
 
 
-      <a  style="margin-left: 550px;" href="explore.html" class="home-btn">Back to Home</a>
+      <a href="explore.html" class="home-btn">Back to Home</a>
 
     </div>
   

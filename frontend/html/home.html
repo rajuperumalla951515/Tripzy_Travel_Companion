@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Success - Tripzy</title>
     <link rel="stylesheet" href="../css/styl.css">
     <link rel="stylesheet" href="../css/annimation.css">
@@ -522,7 +524,7 @@ i{
     text-decoration: none;
     position: absolute;
     bottom: 50px;
-    right: 660px;
+    right: 20px;
     z-index: 99999999;
        background-color: #00c22a;
       color: rgb(0, 0, 0);
@@ -540,6 +542,70 @@ i{
  background-color: #00375e;
 
 }
+
+/* ===== HAMBURGER MENU ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 9999999;
+  padding: 5px;
+}
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+/* ===== HOME PAGE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    background: rgba(0, 46, 61, 0.95);
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+    border-radius: 12px;
+    min-width: 180px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    z-index: 9999999;
+  }
+  nav.open { display: flex; }
+  #navitems { font-size: 15px; padding: 10px 20px; border-radius: 0; display: block; }
+  #contentwrap { padding: 15px 15px; }
+  #maincontent h1 { font-size: 2.5rem; letter-spacing: 4px; }
+  #maincontent h3 { font-size: 1.2rem; letter-spacing: 4px; }
+  #mainimg { width: 70%; }
+  #see {
+    position: static;
+    display: inline-block;
+    margin: 10px auto;
+  }
+  .headnav { position: relative; }
+  #sectionbox { height: auto; min-height: 95vh; }
+  .aboutus { height: auto; padding: 20px 10px; }
+  .aboutus .boxes { flex-direction: column; align-items: center; }
+  .aboutus .boxes .box1,
+  .aboutus .boxes .box2,
+  .aboutus .boxes .box3 { width: 90%; height: auto; margin: 10px auto; padding: 15px; }
+  .aboutcontainer { width: 95%; height: auto; padding: 10px; }
+}
+@media (max-width: 480px) {
+  #maincontent h1 { font-size: 1.8rem; letter-spacing: 2px; }
+  #maincontent h3 { font-size: 1rem; letter-spacing: 2px; }
+  #logo { font-size: 22px; }
+}
     </style>
 </head>
 <body>
@@ -548,15 +614,20 @@ i{
             
             <div id="contentwrap">
                 <a href="explore.html" id="see">Explore Now</a>
+                <div class="headnav" style="position:relative;">
                 <header>
                     <a id="logo"><span>Trip</span>zy</a>
-                    <nav>
+                    <nav id="mainNav">
                         
                         
                         <a id="navitems" href="contact.html">Contact Us</a>
                         <a id="navitems" href="frontpage.html">logout</a>
                     </nav>
+                    <div class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation" role="button" tabindex="0">
+                      <span></span><span></span><span></span>
+                    </div>
                 </header>
+                </div>
                 <div id="maincontent">
                     <h3>You're Successfully</h3>
                     <h1>Logged in ✅</h1>
@@ -568,5 +639,20 @@ i{
 
     
     <script src="https://kit.fontawesome.com/6d86d85d76.js" crossorigin="anonymous"></script>
-</body>
+    <script>
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const mainNav = document.getElementById("mainNav");
+      if (hamburgerBtn) {
+        hamburgerBtn.addEventListener("click", function () {
+          mainNav.classList.toggle("open");
+          hamburgerBtn.classList.toggle("active");
+        });
+        hamburgerBtn.addEventListener("keydown", function(e) {
+          if (e.key === "Enter" || e.key === " ") {
+            mainNav.classList.toggle("open");
+            hamburgerBtn.classList.toggle("active");
+          }
+        });
+      }
+    </script>
 </html>

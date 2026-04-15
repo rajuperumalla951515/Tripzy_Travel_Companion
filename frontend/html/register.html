@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
     <link rel="stylesheet" href="../css/styl.css">
     <link rel="stylesheet" href="../css/annimation.css">
@@ -77,6 +79,38 @@
             width: 400px;
             height: auto;
             border: 1px solid white;
+        }
+
+        @media (max-width: 768px) {
+          #sectionbox {
+            height: auto;
+            min-height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 30px;
+          }
+          .earth, .leaf, .leafy, .anni, .texty {
+            display: none;
+          }
+          .registerbox {
+            position: static;
+            margin: 20px auto 0;
+            width: 100%;
+            max-width: 420px;
+            padding: 0 15px;
+          }
+          .register-container {
+            width: 100%;
+          }
+          header {
+            padding: 15px 20px;
+            width: 100%;
+          }
+        }
+        @media (max-width: 480px) {
+          .register-container { padding: 1.5rem 1rem; }
         }
         .register-container h2 {
             color: rgb(239, 244, 239);

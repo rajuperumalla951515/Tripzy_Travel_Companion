@@ -27,10 +27,11 @@
       font-size: 20px;
       color: #ffffff;
       background: linear-gradient(to right, #000428, #004e92);
-      width: 1485px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
       height: 60px;
-      margin: 10px;
-      margin-right: 10px;
+      margin: 10px 0;
     }
   </style>
 </head>
@@ -251,6 +252,85 @@ a:hover {
   text-decoration: underline;
 }
 
+/* ===== EXPLORE2 PAGE RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .scroll-section {
+    width: auto;
+    margin: 20px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    height: auto;
+    gap: 10px;
+  }
+  header h2 {
+    scale: 1;
+    font-size: 22px;
+  }
+  .nav-left {
+    margin: 0;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .nav-left div {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+  .search-section {
+    padding: 30px 15px 50px;
+    margin: 5px;
+  }
+  .search-section h1 {
+    font-size: 24px;
+    margin-left: 0;
+  }
+  .search-section p {
+    font-size: 14px;
+    margin-left: 0;
+  }
+  .search-box {
+    flex-direction: column;
+    max-width: 100%;
+    padding: 10px;
+  }
+  .search-box > div {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    min-width: unset;
+    width: 100%;
+  }
+  .search-box > div:last-child {
+    border-bottom: none;
+  }
+  .guest-options {
+    margin-left: 0;
+  }
+  .scroll-section {
+    width: auto;
+    margin: 15px 5px;
+  }
+  #searchResult {
+    font-size: 14px;
+    height: auto;
+    min-height: 60px;
+    padding: 10px 17px;
+  }
+  #userIcon {
+    right: 10px !important;
+  }
+  #userProfileBox {
+    right: 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  header h2 { font-size: 18px; }
+}
+
 
   </style>
   <script>
@@ -360,7 +440,7 @@ Logout</a>
     <h2 id="trendingHeading">Trending Hotels</h2>
     <p class="subtext">Travellers searching for Hotels also booked these</p>
 
-   <div style="display: flex; padding: 20px 50px; border-radius: 20px; background: #f5f5f5; gap: 20px; font-family: 'Poppins', sans-serif;">
+   <div style="display: flex; padding: 20px 15px; border-radius: 20px; background: #f5f5f5; gap: 20px; font-family: 'Poppins', sans-serif; flex-wrap: wrap; overflow-x: hidden;">
 
   <!-- Left Column (Map + Filters) -->
   <div style="width: 300px;">
@@ -418,7 +498,7 @@ Logout</a>
   </div>
 <div class="htlbox" style="display: table-row;">
   <!-- Hotel Card 1 -->
-  <div style="background: #e9f3ff; width: 900px; border-radius: 12px; padding: 10px; display: flex; margin-bottom: 25px;">
+  <div style="background: #e9f3ff; width: 100%; max-width: 100%; box-sizing: border-box; border-radius: 12px; padding: 10px; display: flex; flex-wrap: wrap; margin-bottom: 25px;">
     <img src="../images/htl10.jpg" alt="Hotel Image"
          style="width: 250px; height: 300px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
     <div style="flex-grow: 1;">
